@@ -4,6 +4,6 @@
  *
  */
 import { AppRegistry } from 'react-native';
-const init = require('./js/init');
+import Root from './js/Root';
 
-AppRegistry.registerComponent('CrossfitTimer', init);
+AppRegistry.registerComponent('CrossfitTimer', () => Root);

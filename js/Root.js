@@ -11,21 +11,17 @@ import {
     View
 } from 'react-native';
 
-//import CrossfitTimer from 'CrossfitTimer';
-var CrossfitTimer = require('CrossfitTimer');
+import CrossfitTimer from './CrossfitTimer';
+
 console.log("CFT: ", CrossfitTimer);
 
-function init(): ReactClass<{}> {
-    class Root extends React.Component {
-        render() {
-            return (
-                <CrossfitTimer />
-            );
-        }
+var Root = React.createClass({
+    render() {
+        return (
+            <CrossfitTimer />
+        );
     }
-
-    return Root;
-}
+});
 
 const styles = StyleSheet.create({
     container: {
@@ -46,4 +42,4 @@ const styles = StyleSheet.create({
     },
 });
 
-module.exports = init;
+module.exports = Root;
