@@ -8,6 +8,7 @@ var React = require('React');
 
 import {
     StyleSheet,
+    TabBarIOS,
     Text,
     TextInput,
     Slider,
@@ -17,15 +18,42 @@ import {
 var CrossfitTimer = React.createClass({
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Crossfit Timer
-                </Text>
-                <Slider />
-                <TextInput
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                />
-            </View>
+                <TabBarIOS unselectedTintColor="yellow"
+                           tintColor="white"
+                           unselectedItemTintColor="red"
+                           barTintColor="darkslateblue">
+                    <TabBarIOS.Item
+                        title="Blue Tab"
+                        systemIcon="most-viewed"
+                        selected={false}>
+                        <View style={[styles.tabContent]}>
+                            <Text style={styles.tabText}>tab1</Text>
+                            <Text style={styles.tabText}>test</Text>
+                        </View>
+                    </TabBarIOS.Item>
+
+                    <TabBarIOS.Item
+                        systemIcon="history"
+                        badgeColor="black"
+                        title="Black"
+                        selected={false}>
+                        <View style={[styles.tabContent]}>
+                            <Text style={styles.tabText}>tab1</Text>
+                            <Text style={styles.tabText}>test</Text>
+                        </View>
+                    </TabBarIOS.Item>
+
+                    <TabBarIOS.Item
+                        systemIcon="recents"
+                        renderAsOriginal
+                        title="More"
+                        selected={false}>
+                        <View style={[styles.tabContent]}>
+                            <Text style={styles.tabText}>tab1</Text>
+                            <Text style={styles.tabText}>test</Text>
+                        </View>
+                    </TabBarIOS.Item>
+                </TabBarIOS>
         );
     }
 });
@@ -35,7 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#5848FF',
     },
     welcome: {
         fontSize: 20,
@@ -46,6 +74,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5,
+    },
+    tabContent: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    tabText: {
+        color: 'white',
+        margin: 50,
     },
 });
 
