@@ -9,13 +9,13 @@ export default crossfitTimer = (state = {}, action) => {
             return {
                 ...state,
                 inMotion : true
-            }
+            };
 
         case 'STOP_TIMER':
             return {
                 ...state,
                 inMotion : false
-            }
+            };
 
         default:
             return state
