@@ -35,9 +35,9 @@ var TabNav = React.createClass({
                         systemIcon="history"
                         badgeColor="black"
                         title="Black"
-                        selected={false}>
+                        selected={true}>
                         <View style={[styles.tabContent]}>
-                            <Text style={styles.tabText}>tab1</Text>
+                            <Text style={styles.tabText}>tab2</Text>
                             <Text style={styles.tabText}>test</Text>
                         </View>
                     </TabBarIOS.Item>
@@ -48,7 +48,7 @@ var TabNav = React.createClass({
                         title="More"
                         selected={false}>
                         <View style={[styles.tabContent]}>
-                            <Text style={styles.tabText}>tab1</Text>
+                            <Text style={styles.tabText}>tab3</Text>
                             <Text style={styles.tabText}>test</Text>
                         </View>
                     </TabBarIOS.Item>
