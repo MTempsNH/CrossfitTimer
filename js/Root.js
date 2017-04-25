@@ -10,7 +10,9 @@ import { Provider } from 'react-redux';
 import reducer from './reducer';
 import App from './App';
 
-const store = createStore(reducer);
+const store = createStore(reducer, {
+    inMotion : false
+});
 
 var Root = React.createClass({
     render() {

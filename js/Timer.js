@@ -18,7 +18,8 @@ import {
 import Button from './Button';
 
 const Timer = ( props ) => {
-    const { onControlTimer } = props;
+    const { onBeginTimer, onStopTimer } = props;
+    console.log('PROPS: ', props);
 
     return (
         <View style={[styles.container]}>
@@ -26,8 +27,15 @@ const Timer = ( props ) => {
                 Welcome to the awesomeness Crossfit Timer
             </Text>
             <Button
-                onPress={onControlTimer}
-                title="Control Timer">
+                onPress={onBeginTimer}
+                title="BEGIN">
+            </Button>
+            <Text>
+                ---
+            </Text>
+            <Button
+                onPress={onStopTimer}
+                title="STOP">
             </Button>
             <TabNav />
         </View>
@@ -43,7 +51,8 @@ const styles = StyleSheet.create({
 });
 
 Timer.propTypes = {
-    onControlTimer: PropTypes.func.isRequired
+    onBeginTimer : PropTypes.func.isRequired,
+    onStopTimer : PropTypes.func.isRequired
 };
 
 module.exports = Timer;

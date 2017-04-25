@@ -4,6 +4,7 @@
 
 // Types
 const BEGIN_TIMER = 'BEGIN_TIMER';
+const STOP_TIMER = 'STOP_TIMER';
 
 // Creators
 export const beginTimer = (inMotion) => {
