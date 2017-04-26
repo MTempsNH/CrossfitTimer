@@ -15,28 +15,41 @@ import {
     Slider,
     View
 } from 'react-native';
+
 import Button from './Button';
 
 const Timer = ( props ) => {
-    const { onBeginTimer, onStopTimer } = props;
+    const { inMotion, onBeginTimer, onStopTimer } = props;
     console.log('PROPS: ', props);
+
+    /**
+     * Determine which buttons should be displayed to the user based upon whether the timer is in motion.
+     * @returns {XML}
+     */
+    renderButtonState = () => {
+        if(!inMotion){
+            return (
+                <Button
+                    onPress={onBeginTimer}
+                    title="BEGIN">
+                </Button>
+            )
+        }else{
+            return(
+                <Button
+                    onPress={onStopTimer}
+                    title="STOP">
+                </Button>
+            )
+        }
+    }
 
     return (
         <View style={[styles.container]}>
             <Text>
                 Welcome to the awesomeness Crossfit Timer
             </Text>
-            <Button
-                onPress={onBeginTimer}
-                title="BEGIN">
-            </Button>
-            <Text>
-                ---
-            </Text>
-            <Button
-                onPress={onStopTimer}
-                title="STOP">
-            </Button>
+            {this.renderButtonState()}
             <TabNav />
         </View>
     );
