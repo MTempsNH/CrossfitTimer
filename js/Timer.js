@@ -26,19 +26,19 @@ const Timer = ( props ) => {
      * Determine which buttons should be displayed to the user based upon whether the timer is in motion.
      * @returns {XML}
      */
-    renderButtonState = () => {
-        if(!inMotion){
-            return (
-                <Button
-                    onPress={onBeginTimer}
-                    title="BEGIN">
-                </Button>
-            )
-        }else{
+    renderButtonState = (timerInMotion) => {
+        if(timerInMotion){
             return(
                 <Button
                     onPress={onStopTimer}
                     title="STOP">
+                </Button>
+            )
+        }else{
+            return (
+                <Button
+                    onPress={onBeginTimer}
+                    title="BEGIN">
                 </Button>
             )
         }
@@ -49,7 +49,7 @@ const Timer = ( props ) => {
             <Text>
                 Welcome to the awesomeness Crossfit Timer
             </Text>
-            {this.renderButtonState()}
+            {this.renderButtonState(inMotion)}
             <TabNav />
         </View>
     );
