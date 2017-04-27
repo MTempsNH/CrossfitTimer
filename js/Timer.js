@@ -46,10 +46,14 @@ const Timer = ( props ) => {
 
     return (
         <View style={[styles.container]}>
-            <Text>
-                Welcome to the awesomeness Crossfit Timer
-            </Text>
-            {this.renderButtonState(inMotion)}
+            <View style={[styles.mainContent]}>
+                <Text>
+                    Welcome to the awesomeness Crossfit Timer
+                </Text>
+            </View>
+            <View style={[styles.subContent]}>
+                {this.renderButtonState(inMotion)}
+            </View>
             <TabNav />
         </View>
     );
@@ -60,7 +64,16 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         height: '100%',
         backgroundColor: '#5848FF',
+        paddingTop: 20
     },
+    mainContent: {
+        height: '66%',
+        backgroundColor: '#83DB0D'
+    },
+    subContent:{
+        height: '33%',
+        backgroundColor: '#CDF214'
+    }
 });
 
 Timer.propTypes = {
