@@ -24,6 +24,7 @@ const Timer = ( props ) => {
 
     let style1, style2;
 
+
     if(inMotion){
         style1 = styles.mainContent
         style2 = styles.subContent;
