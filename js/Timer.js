@@ -22,6 +22,16 @@ const Timer = ( props ) => {
     const { inMotion, onBeginTimer, onStopTimer } = props;
     console.log('PROPS: ', props);
 
+    let style1, style2;
+
+    if(inMotion){
+        style1 = styles.mainContent
+        style2 = styles.subContent;
+    }else{
+        style1 = styles.subContent
+        style2 = styles.mainContent;
+    }
+
     /**
      * Determine which buttons should be displayed to the user based upon whether the timer is in motion.
      * @returns {XML}
@@ -46,12 +56,12 @@ const Timer = ( props ) => {
 
     return (
         <View style={[styles.container]}>
-            <View style={[styles.mainContent]}>
+            <View style={[style1]}>
                 <Text>
                     Welcome to the awesomeness Crossfit Timer
                 </Text>
             </View>
-            <View style={[styles.subContent]}>
+            <View style={[style2]}>
                 {this.renderButtonState(inMotion)}
             </View>
             <TabNav />
