@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     mainContent: {
-        height: '66%',
+        height: '33%',
         backgroundColor: '#83DB0D'
     },
     subContent:{
-        height: '33%',
+        height: '66%',
         backgroundColor: '#CDF214'
     }
 });
