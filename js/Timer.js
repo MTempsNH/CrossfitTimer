@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 import Button from './Button';
+import Display from './Display';
 
 const Timer = ( props ) => {
     const { inMotion, onBeginTimer, onStopTimer } = props;
@@ -26,10 +27,10 @@ const Timer = ( props ) => {
 
 
     if(inMotion){
-        style1 = styles.mainContent
+        style1 = styles.mainContent;
         style2 = styles.subContent;
     }else{
-        style1 = styles.subContent
+        style1 = styles.subContent;
         style2 = styles.mainContent;
     }
 
@@ -57,12 +58,10 @@ const Timer = ( props ) => {
 
     return (
         <View style={[styles.container]}>
-            <View style={[style1]}>
-                <Text>
-                    Welcome to the awesomeness Crossfit Timer
-                </Text>
+            <View style={[style1, {backgroundColor: '#83DB0D'}]}>
+                <Display />
             </View>
-            <View style={[style2]}>
+            <View style={[style2, styles.centeredContainer, {backgroundColor: '#CDF214'}]}>
                 {this.renderButtonState(inMotion)}
             </View>
             <TabNav />
@@ -72,19 +71,24 @@ const Timer = ( props ) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: 'column',
-        height: '100%',
+        width: '100%',
         backgroundColor: '#5848FF',
         paddingTop: 20
     },
     mainContent: {
-        height: '33%',
-        backgroundColor: '#83DB0D'
+        height: '40%',
+        width: '100%'
     },
     subContent:{
-        height: '66%',
-        backgroundColor: '#CDF214'
-    }
+        height: '60%',
+        width: '100%'
+    },
+    centeredContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 });
 
 Timer.propTypes = {

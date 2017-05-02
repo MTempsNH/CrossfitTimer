@@ -2,6 +2,7 @@ import React from 'react';
 import {
     TouchableOpacity,
     Text,
+    View,
     StyleSheet
 } from 'react-native';
 
@@ -16,20 +17,30 @@ const Button = (props: Props) => {
 
     return (
         <TouchableOpacity onPress={onPress} style={[styles.mainContent]}>
-            <Text style={[styles.text]}>{title}</Text>
+            <View style={[styles.innerContent, styles.centeredContainer]}>
+                <Text style={[styles.text, {marginTop: '42%'}]}>{title}</Text>
+            </View>
         </TouchableOpacity>
     )
 };
 
 const styles = StyleSheet.create({
     mainContent: {
-        height: '25%',
-        width: '66%',
-        backgroundColor: '#333'
-
+        height: 100,
+        width: 100,
+        backgroundColor: '#333',
+        borderRadius: 50
     },
     text: {
         color: 'white'
+    },
+    centeredContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    innerContent: {
+        backgroundColor: 'rgba(0,0,0,0)',
+
     }
 });
 
