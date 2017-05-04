@@ -7,6 +7,10 @@ var React = require('React');
 import { PropTypes } from 'react';
 import TabNav from './TabNav';
 
+const RUNNING_TIMER = "RUNNING_TIMER";
+const START_TIMER = "START_TIMER";
+const STOP_TIMER = "STOP_TIMER";
+
 import {
     StyleSheet,
     TabBarIOS,
@@ -20,13 +24,39 @@ import Button from './Button';
 import Display from './Display';
 
 const Timer = ( props ) => {
-    const { inMotion, onBeginTimer, onStopTimer } = props;
+    const { onBeginTimer, onStopTimer, onRunningTimer, phase, runningTime, startTime, stopTime } = props;
     console.log('PROPS: ', props);
+    console.log("RUNNING TIME: ", runningTime);
+    console.log("phase: ", phase);
 
-    let style1, style2;
+    constructor = (props) => {
+        console.log("CONSTRUCTOR");
+        // let style1, style2, timerReq;
+    };
+
+    switch(phase){
+        case RUNNING_TIMER:
+            // Do nothing
+            break;
+        case START_TIMER:
+            console.log('START_TIMER');
+            timerReq = window.requestAnimationFrame(computeTime);
+            // onRunningTimer();
+            break;
+        case STOP_TIMER:
+            console.log('STOP_TIMER: ', timerReq);
+            cancelAnimationFrame(timerReq);
+            break;
+        default:
+
+            break;
+    }
+
+    style1 = styles.subContent;
+    style2 = styles.mainContent;
 
 
-    if(inMotion){
+    /*if(inMotion){
         style1 = styles.mainContent;
         style2 = styles.subContent;
     }else{
@@ -34,27 +64,49 @@ const Timer = ( props ) => {
         style2 = styles.mainContent;
     }
 
+    if(inMotion){
+        computeTime();
+    }else{
+        console.log("timerReq: ", timerReq);
+
+        if(timerReq){
+            cancelAnimationFrame(timerReq);
+        }
+    };*/
+
+    /**
+     * Control the timer functionality
+     */
+    computeTime = (timestamp) => {
+        console.log("TIMESET: ", startTime);
+        console.log("STAMP: ", timestamp);
+        //onUpdateTimer(timestamp);
+        timerReq = window.requestAnimationFrame(computeTime);
+    };
+
+
+
     /**
      * Determine which buttons should be displayed to the user based upon whether the timer is in motion.
      * @returns {XML}
      */
-    renderButtonState = (timerInMotion) => {
-        if(timerInMotion){
+    renderButtonState = (currentPhase) => {
+        if(currentPhase === RUNNING_TIMER){
             return(
                 <Button
-                    onPress={onStopTimer}
+                    onPress={() => onStopTimer()}
                     title="STOP">
                 </Button>
             )
         }else{
             return (
                 <Button
-                    onPress={onBeginTimer}
+                    onPress={() => onBeginTimer()}
                     title="BEGIN">
                 </Button>
             )
         }
-    }
+    };
 
     return (
         <View style={[styles.container]}>
@@ -62,7 +114,7 @@ const Timer = ( props ) => {
                 <Display />
             </View>
             <View style={[style2, styles.centeredContainer, {backgroundColor: '#CDF214'}]}>
-                {this.renderButtonState(inMotion)}
+                {this.renderButtonState(phase)}
             </View>
             <TabNav />
         </View>
@@ -93,7 +145,9 @@ const styles = StyleSheet.create({
 
 Timer.propTypes = {
     onBeginTimer : PropTypes.func.isRequired,
-    onStopTimer : PropTypes.func.isRequired
+    onStopTimer : PropTypes.func.isRequired,
+    onRunningTimer : PropTypes.func.isRequired,
+    phase : PropTypes.string
 };
 
 module.exports = Timer;
