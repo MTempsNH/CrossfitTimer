@@ -1,7 +1,7 @@
 /**
  * Created by n0204620 on 4/19/17.
  */
-const RUNNING_TIMER = "RUNNING_TIMER";
+const UPDATE_TIMER = "UPDATE_TIMER";
 const START_TIMER = "START_TIMER";
 const STOP_TIMER = "STOP_TIMER";
 
@@ -13,22 +13,20 @@ export default crossfitTimer = (state = {}, action) => {
         case 'BEGIN_TIMER':
             return {
                 ...state,
-                startTime : Date.now(),
-                phase : START_TIMER
+                inMotion : true
             };
 
         case 'STOP_TIMER':
             return {
                 ...state,
-                stopTime : Date.now(),
-                phase : STOP_TIMER
+                inMotion : false
             };
 
-        case 'RUNNING_TIMER':
-            console.log('RUNNING_TIMER ', action.value);
+        case 'UPDATE_TIMER':
+            console.log('UPDATE_TIMER ', action.moment);
             return {
                 ...state,
-                phase : RUNNING_TIMER
+                runningTime : action.moment
             };
 
         default:

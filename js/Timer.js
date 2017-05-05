@@ -24,17 +24,11 @@ import Button from './Button';
 import Display from './Display';
 
 const Timer = ( props ) => {
-    const { onBeginTimer, onStopTimer, onRunningTimer, phase, runningTime, startTime, stopTime } = props;
+    const { inMotion, onBeginTimer, onStopTimer, runningTime } = props;
     console.log('PROPS: ', props);
     console.log("RUNNING TIME: ", runningTime);
-    console.log("phase: ", phase);
 
-    constructor = (props) => {
-        console.log("CONSTRUCTOR");
-        // let style1, style2, timerReq;
-    };
-
-    switch(phase){
+    /*switch(phase){
         case RUNNING_TIMER:
             // Do nothing
             break;
@@ -50,13 +44,9 @@ const Timer = ( props ) => {
         default:
 
             break;
-    }
+    }*/
 
-    style1 = styles.subContent;
-    style2 = styles.mainContent;
-
-
-    /*if(inMotion){
+    if(inMotion){
         style1 = styles.mainContent;
         style2 = styles.subContent;
     }else{
@@ -64,34 +54,12 @@ const Timer = ( props ) => {
         style2 = styles.mainContent;
     }
 
-    if(inMotion){
-        computeTime();
-    }else{
-        console.log("timerReq: ", timerReq);
-
-        if(timerReq){
-            cancelAnimationFrame(timerReq);
-        }
-    };*/
-
-    /**
-     * Control the timer functionality
-     */
-    computeTime = (timestamp) => {
-        console.log("TIMESET: ", startTime);
-        console.log("STAMP: ", timestamp);
-        //onUpdateTimer(timestamp);
-        timerReq = window.requestAnimationFrame(computeTime);
-    };
-
-
-
     /**
      * Determine which buttons should be displayed to the user based upon whether the timer is in motion.
      * @returns {XML}
      */
-    renderButtonState = (currentPhase) => {
-        if(currentPhase === RUNNING_TIMER){
+    renderButtonState = (inMotion) => {
+        if(inMotion){
             return(
                 <Button
                     onPress={() => onStopTimer()}
@@ -111,10 +79,10 @@ const Timer = ( props ) => {
     return (
         <View style={[styles.container]}>
             <View style={[style1, {backgroundColor: '#83DB0D'}]}>
-                <Display />
+                <Display runningTime={runningTime}/>
             </View>
             <View style={[style2, styles.centeredContainer, {backgroundColor: '#CDF214'}]}>
-                {this.renderButtonState(phase)}
+                {this.renderButtonState(inMotion)}
             </View>
             <TabNav />
         </View>
@@ -145,9 +113,7 @@ const styles = StyleSheet.create({
 
 Timer.propTypes = {
     onBeginTimer : PropTypes.func.isRequired,
-    onStopTimer : PropTypes.func.isRequired,
-    onRunningTimer : PropTypes.func.isRequired,
-    phase : PropTypes.string
+    onStopTimer : PropTypes.func.isRequired
 };
 
 module.exports = Timer;

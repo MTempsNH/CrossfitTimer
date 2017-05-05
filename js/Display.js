@@ -7,11 +7,12 @@ import {
 } from 'react-native';
 
 const Display = (props: Props) => {
+    const { runningTime } = props;
 
     return (
         <View style={[styles.mainContent]}>
             <View style={[styles.innerContent, styles.centeredContainer]}>
-                <Text style={[styles.text, {marginTop: '50%'}]}>00:00:00</Text>
+                <Text style={[styles.text, {marginTop: '50%'}]}>{ runningTime }</Text>
             </View>
         </View>
     )
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        fontSize: 60
+        fontSize: 40
     },
     centeredContainer: {
         justifyContent: 'center',
