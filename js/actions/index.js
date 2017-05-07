@@ -19,22 +19,25 @@ let timerReq;
 
 
 // Creators
-export const beginTimer = () => (dispatch) => {
+export const beginTimer = () => (dispatch, getState) => {
     // console.log('b inMotion: ', inMotion);
     // Trigger view animation
     LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 
+    dispatch({
+        type : BEGIN_TIMER
+    });
+
+    const { startTime } = getState();
+
     const computeTime = (timestamp) => {
+        console.log("Starttime: ", startTime);
         console.log("STAMP: ", timestamp);
-        dispatch(updateTime(timestamp));
+        dispatch(updateTime(timestamp, startTime));
         timerReq = window.requestAnimationFrame(computeTime);
     };
 
     timerReq = window.requestAnimationFrame(computeTime);
-
-    dispatch({
-        type : BEGIN_TIMER
-    });
 };
 
 export const stopTimer = (inMotion) => {
@@ -49,9 +52,10 @@ export const stopTimer = (inMotion) => {
     }
 };
 
-export const updateTime = (moment) => {
+export const updateTime = (moment, startTime) => {
     return {
         type : UPDATE_TIMER,
-        moment
+        moment,
+        startTime
     }
 };
