@@ -12,7 +12,7 @@ const Display = (props: Props) => {
     return (
         <View style={[styles.mainContent]}>
             <View style={[styles.innerContent, styles.centeredContainer]}>
-                <Text style={[styles.text, {marginTop: '50%'}]}>{ runningTime }</Text>
+                <Text style={[styles.text]}>{ runningTime }</Text>
             </View>
         </View>
     )
@@ -27,15 +27,21 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        fontSize: 40
+        fontSize: 50,
+        width: '100%',
+        backgroundColor: '#333',
+        textAlign:'left',
     },
     centeredContainer: {
         justifyContent: 'center',
         alignItems: 'center'
     },
     innerContent: {
-        backgroundColor: 'rgba(0,0,0,0)',
-
+        //backgroundColor: 'rgba(0,0,0,0)',
+        backgroundColor: '#5848FF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
     }
 });
 
