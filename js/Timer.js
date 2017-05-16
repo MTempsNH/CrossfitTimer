@@ -28,24 +28,6 @@ const Timer = ( props ) => {
     console.log('PROPS: ', props);
     console.log("RUNNING TIME: ", runningTime);
 
-    /*switch(phase){
-        case RUNNING_TIMER:
-            // Do nothing
-            break;
-        case START_TIMER:
-            console.log('START_TIMER');
-            timerReq = window.requestAnimationFrame(computeTime);
-            // onRunningTimer();
-            break;
-        case STOP_TIMER:
-            console.log('STOP_TIMER: ', timerReq);
-            cancelAnimationFrame(timerReq);
-            break;
-        default:
-
-            break;
-    }*/
-
     if(inMotion){
         style1 = styles.mainContent;
         style2 = styles.subContent;
