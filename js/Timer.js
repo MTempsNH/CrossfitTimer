@@ -24,7 +24,7 @@ import Button from './Button';
 import Display from './Display';
 
 const Timer = ( props ) => {
-    const { inMotion, onBeginTimer, onStopTimer, runningTime } = props;
+    const { inMotion, onBeginTimer, onResetTimer, onStopTimer, runningTime } = props;
     console.log('PROPS: ', props);
     console.log("RUNNING TIME: ", runningTime);
 
@@ -65,6 +65,10 @@ const Timer = ( props ) => {
             </View>
             <View style={[style2, styles.centeredContainer, {backgroundColor: '#CDF214'}]}>
                 {this.renderButtonState(inMotion)}
+                <Button
+                    onPress={() => onResetTimer()}
+                    title="RESET">
+                </Button>
             </View>
             <TabNav />
         </View>

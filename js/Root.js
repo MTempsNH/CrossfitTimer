@@ -13,7 +13,10 @@ import App from './App';
 
 const store = createStore(
     reducer,
-    { runningTime: '00:00.00'},
+    {
+        runningTime: '00:00.00',
+        span : null
+    },
     applyMiddleware(thunk)
 );
 

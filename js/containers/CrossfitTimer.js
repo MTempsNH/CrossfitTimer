@@ -5,7 +5,7 @@
  * */
 var React = require('React');
 import { connect } from 'react-redux';
-import { beginTimer, stopTimer, runningTimer } from '../actions';
+import { beginTimer, resetTimer, stopTimer } from '../actions';
 import Timer from '../Timer';
 
 const mapStateToProps = (state) => {
@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     onBeginTimer : beginTimer,
-    onStopTimer : stopTimer,
-    onRunningTimer : runningTimer
+    onResetTimer : resetTimer,
+    onStopTimer : stopTimer
 };
 
 const CrossfitTimer = connect(

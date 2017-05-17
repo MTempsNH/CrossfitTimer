@@ -5,6 +5,7 @@
 // Types
 const BEGIN_TIMER = 'BEGIN_TIMER';
 const STOP_TIMER = 'STOP_TIMER';
+const RESET_TIMER = 'RESET_TIMER';
 const UPDATE_TIMER = 'UPDATE_TIMER';
 
 import {
@@ -57,5 +58,11 @@ export const updateTime = (moment, startTime) => {
         type : UPDATE_TIMER,
         moment,
         startTime
+    }
+};
+
+export const resetTimer = (moment, startTime) => {
+    return {
+        type : RESET_TIMER
     }
 };
