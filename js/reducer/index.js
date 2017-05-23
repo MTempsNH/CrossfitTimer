@@ -36,7 +36,7 @@ export default crossfitTimer = (state = {}, action) => {
         case 'BEGIN_TIMER':
             return {
                 ...state,
-                startTime : state.span ? (state.span + Date.now()) : Date.now(),
+                startTime : state.span ? (Date.now() + state.span) : Date.now(),
                 inMotion : true
             };
 
